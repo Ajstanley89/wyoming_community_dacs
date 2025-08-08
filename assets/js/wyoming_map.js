@@ -62,7 +62,15 @@ var pipeline = new L.Polyline([facilityData.coords, injectionData.coords], {
     smoothFactor: 1
 })
 
-map.addLayer(pipeline.bindPopup(injectionData.hoverText))
+var ccsPipeline = new L.Polyline([gasData.coords, injectionData.coords], {
+    color: 'blue',
+    weight: 5,
+    opacity: 0.75,
+    smoothFactor: 1
+})
+
+map.addLayer(pipeline.bindPopup('Pipeline from Facility to Injection Site'))
+map.addLayer(ccsPipeline.bindPopup('Pipeline from Gas Plant to Injection Site'))
 
 function addMarkers(data, custom_icon) {
     L.marker(data.coords, {icon: custom_icon})
